@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { APIProvider, useMap } from "@vis.gl/react-google-maps";
+import {
+  APIProvider,
+  Map,
+  // Marker,
+  // useMarkerRef,
+  useMap,
+} from "@vis.gl/react-google-maps";
 
 const MyComponent = () => {
   const map = useMap();
@@ -13,12 +19,16 @@ const MyComponent = () => {
   return <></>;
 };
 
-const Map = () => (
-  <APIProvider apiKey={"YOUR API KEY HERE"}>
-    <Map /* ... */></Map>
+const MapWrapper = () => (
+  <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAP_KEY}>
+    <Map
+      zoom={12}
+      center={{ lat: 53.54992, lng: 10.00678 }}
+      className="map-wrapper"
+    ></Map>
 
     <MyComponent />
   </APIProvider>
 );
 
-export default Map;
+export default MapWrapper;
