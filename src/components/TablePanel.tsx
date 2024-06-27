@@ -9,7 +9,7 @@ function TablePanel() {
     <Panel ref={panelRef}>
       <PanelHeader title="Catchments" panelRef={panelRef} />
 
-      <h1>TABLE</h1>
+      <h1>TABLE TEST</h1>
     </Panel>
   );
 }
