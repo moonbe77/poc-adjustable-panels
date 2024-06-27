@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import {
   // APIProvider,
   Map,
@@ -25,7 +25,7 @@ const MapWrapper = () => (
     <Map
       // zoom={12}
       defaultZoom={5}
-      defaultCenter={AUS_COORDS} // asutraloa coords 53.54992, 10.00678
+      defaultCenter={AUS_COORDS} // australia coords 53.54992, 10.00678
       className="map-wrapper"
     ></Map>
 

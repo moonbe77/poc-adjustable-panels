@@ -1,5 +1,8 @@
 import { useMap } from "@vis.gl/react-google-maps";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import { Button } from "./ui/button";
+import PanelHeader from "./PanelHeader";
+import { ImperativePanelHandle, Panel } from "react-resizable-panels";
 const AUS_COORDS = { lat: -25.344, lng: 131.036 };
 
 const locations = [
@@ -27,6 +30,8 @@ const locations = [
 ];
 
 function LeftPanel() {
+  const panelRef = useRef<ImperativePanelHandle>(null);
+
   const map = useMap();
   const [index, setIndex] = React.useState(0);
 
@@ -48,13 +53,21 @@ function LeftPanel() {
   }, [map, index]);
 
   return (
-    <div>
-      <h1>Left Panel</h1>
-      <button onClick={() => map && map.setCenter(AUS_COORDS)}>
-        Set Center
-      </button>
-      <button onClick={handleNextLocation}>Go to next</button>
-    </div>
+    <Panel ref={panelRef}>
+      <PanelHeader title="Build Catchments" panelRef={panelRef} />
+      <div className="p-4 flex flex-col gap-4 items-center justify-center w-full">
+        <Button
+          variant="destructive"
+          size="default"
+          // asChild
+          onClick={() => map && map.setCenter(AUS_COORDS)}
+        >
+          Set Center
+        </Button>
+
+        <Button onClick={handleNextLocation}>Go to next</Button>
+      </div>
+    </Panel>
   );
 }
 
