@@ -22,6 +22,7 @@
     --destructive-foreground: 60 9.1% 97.8%;
     --border: 20 5.9% 90%;
     --input: 20 5.9% 90%;
+    /* hsl(0 0% 100%)*/
     --ring: 24.6 95% 53.1%;
     --radius: 0.3rem;
   }

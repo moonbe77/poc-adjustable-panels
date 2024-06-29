@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import PanelHeader from "./PanelHeader";
 import { ImperativePanelHandle, Panel } from "react-resizable-panels";
+import BuildForm from "./BuildForm";
 const AUS_COORDS = { lat: -25.344, lng: 131.036 };
 
 const locations = [
@@ -29,14 +30,13 @@ const locations = [
   },
 ];
 
-function LeftPanel() {
+function BuildPanel() {
   const panelRef = useRef<ImperativePanelHandle>(null);
 
   const map = useMap();
   const [index, setIndex] = React.useState(0);
 
   const handleNextLocation = () => {
-    console.log("Next Location");
     // get next index
     const nextIndex = index + 1;
     // if next index is greater than locations length, set index to 0
@@ -50,12 +50,13 @@ function LeftPanel() {
   useEffect(() => {
     if (!map) return;
     map.setCenter(locations[index]);
+    console.log("Next Location", locations[index]);
   }, [map, index]);
 
   return (
-    <Panel ref={panelRef}>
+    <Panel ref={panelRef} defaultSize={60}>
       <PanelHeader title="Build Catchments" panelRef={panelRef} />
-      <div className="p-4 flex flex-col gap-4 items-center justify-center w-full">
+      <div className="p-4 flex flex-row gap-4 items-center justify-center w-full">
         <Button
           variant="destructive"
           size="default"
@@ -67,8 +68,9 @@ function LeftPanel() {
 
         <Button onClick={handleNextLocation}>Go to next</Button>
       </div>
+      <BuildForm />
     </Panel>
   );
 }
 
-export default LeftPanel;
+export default BuildPanel;

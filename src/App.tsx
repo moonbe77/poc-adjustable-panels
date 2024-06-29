@@ -6,7 +6,7 @@ import {
 } from "react-resizable-panels";
 import "./styles/globals.css";
 import "./styles/App.css";
-import LeftPanel from "./components/LeftPanel";
+import BuildPanel from "./components/BuildPanel";
 import Map from "./components/Map";
 import MapProvider from "./providers/MapProivder";
 import TablePanel from "./components/TablePanel";
@@ -39,9 +39,9 @@ function App() {
           </h1>
         </div>
         <PanelGroup direction="horizontal">
-          <Panel defaultSize={25} minSize={25}>
+          <Panel defaultSize={30} minSize={25}>
             <PanelGroup direction="vertical">
-              <LeftPanel />
+              <BuildPanel />
 
               <PanelResizeHandle className="h-1 bg-gray-400 hover:bg-gray-700" />
 
@@ -53,7 +53,7 @@ function App() {
             className="w-1 bg-gray-400 hover:bg-gray-700 "
             onDoubleClick={handleRest}
           />
-          <Panel defaultSize={75} minSize={40} ref={panelRef}>
+          <Panel defaultSize={70} minSize={40} ref={panelRef}>
             <Map />
           </Panel>
         </PanelGroup>
